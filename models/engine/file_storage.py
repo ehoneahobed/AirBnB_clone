@@ -4,6 +4,7 @@ import json
 import os
 import datetime
 
+
 class FileStorage():
     """Class for storing and retrieving data"""
     __file_path = "file.json"
@@ -20,7 +21,7 @@ class FileStorage():
         '''sets in __objects the obj with key <obj class name>.id'''
         objname = obj.__class__.__name__
         objID = obj.id
-        key = f"{objname}.{objID}" # <class name>.id = obj
+        key = f"{objname}.{objID}"  # <class name>.id = obj
         self.__objects[key] = obj
 
     def save(self):
@@ -57,15 +58,15 @@ class FileStorage():
                    }
         return classes
 
-
     def reload(self):
         """Reloads the stored objects"""
         if os.path.exists(FileStorage.__file_path):
             #  load the file and dump content as dictionary
-            with open(FileStorage.__file_path, "r", encoding="utf-8") as my_file:
+            with open(FileStorage.__file_path, "r", encoding="utf-8") \
+                    as my_file:
                 object_dict = json.loads(my_file.read())
             final_dict = {}
-           
+
             for id, dictionary in object_dict.items():
                 class_name = dictionary['__class__']
                 final_dict[id] = self.classes()[class_name](**dictionary)
