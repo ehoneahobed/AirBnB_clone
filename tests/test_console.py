@@ -32,8 +32,8 @@ EOF  all  count  create  destroy  help  quit  show  update\n
 """
         self.assertEqual(s, f.getvalue())
 
-
     # Test cases for quit
+
     def test_do_quit(self):
         """Tests the quit commmand"""
         with patch('sys.stdout', new=StringIO()) as f:
@@ -83,7 +83,7 @@ EOF  all  count  create  destroy  help  quit  show  update\n
         msg = f.getvalue()
         self.assertTrue(len(msg) == 0)
         self.assertEqual("", msg)
-    
+
     # Test cases for do_all
     def test_do_all(self):
         """Tests the do_all command"""
